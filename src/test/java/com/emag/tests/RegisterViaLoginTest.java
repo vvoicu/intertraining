@@ -1,25 +1,20 @@
 package com.emag.tests;
 
-import com.emag.pages.RegisterPage;
+import com.emag.steps.HomePageSteps;
+import com.emag.steps.LoginSteps;
 import com.emag.steps.RegisterSteps;
+import net.serenitybdd.junit.runners.SerenityRunner;
+import net.thucydides.core.annotations.Managed;
+import net.thucydides.core.annotations.Steps;
+import net.thucydides.junit.annotations.Qualifier;
 import org.junit.Before;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.openqa.selenium.WebDriver;
 
-import com.emag.steps.HomePageSteps;
-import com.emag.steps.LoginSteps;
-
-import net.serenitybdd.junit.runners.SerenityParameterizedRunner;
-import net.serenitybdd.junit.runners.SerenityRunner;
-import net.thucydides.core.annotations.Managed;
-import net.thucydides.core.annotations.Steps;
-import net.thucydides.junit.annotations.Qualifier;
-import net.thucydides.junit.annotations.UseTestDataFrom;
-
 @RunWith(SerenityRunner.class)
 //@UseTestDataFrom("logindata.csv")
-public class LoginEmagTest {
+public class RegisterViaLoginTest {
 
 	@Managed(uniqueSession = true)
 	public WebDriver webdriver;
@@ -52,21 +47,17 @@ public class LoginEmagTest {
 
 
 	@Test
-	public void loginToEmagTest() {
-		System.out.println("Hamster...");
+	public void loginWithInexitentUser(){
 		homePageSteps.navigateTo(url);
+
 		homePageSteps.moveOverOnMyAccountLink();
 		homePageSteps.clickOnLoginSubmenuLink();
 
-		loginSteps.performLogin(userName, userPass);
-		homePageSteps.moveOverOnMyAccountLink();
-		String actualData = homePageSteps.grabLoggedInUserText();
+		loginSteps.inputUsername(userName);
+		loginSteps.clickOnSubmit();
 
-		System.out.println("Data: " + actualData);
-		
-		homePageSteps.verifyText("Betina Tudor", actualData);
-		homePageSteps.verifyText(expectedMessage, actualData);
+		String actual = registerSteps.grabNoAccountText();
+		homePageSteps.verifyText(noAccountMessage,actual);
 	}
-
 
 }
