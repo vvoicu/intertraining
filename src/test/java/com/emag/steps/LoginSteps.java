@@ -5,6 +5,10 @@ import com.emag.pages.login.LoginPhaseTwoPage;
 
 import net.thucydides.core.annotations.Step;
 import net.thucydides.core.annotations.StepGroup;
+import org.junit.Assert;
+
+import static org.hamcrest.MatcherAssert.assertThat;
+import static org.hamcrest.Matchers.containsString;
 
 public class LoginSteps {
 
@@ -33,6 +37,10 @@ public class LoginSteps {
 	@Step
 	public void inputPassword(String pass) {
 		loginPhaseTwoPage.inputPassword(pass);
+	}
+
+	public void verifyPasswordErrorMessage(String text){
+		Assert.assertTrue("Expected: " + text + ", Actual: " + loginPhaseTwoPage.getMesaggeText(), loginPhaseTwoPage.getMesaggeText().contains(text));
 	}
 
 }
