@@ -36,9 +36,9 @@ public class LoginPasswordMessageTest {
 	
 	@Before
 	public void setupData() {
-		userName = "betina.tudor@gmail.com";
+		userName = "paul@yahoo.com";
 		userPass = "testarebt";
-		expectedMessage = "Betina Tudor2";
+		expectedMessage = "Iuliana Cozma";
 	}
 
 	@Test
@@ -48,7 +48,12 @@ public class LoginPasswordMessageTest {
 		homePageSteps.moveOverOnMyAccountLink();
 		homePageSteps.clickOnLoginSubmenuLink();
 		loginSteps.performLogin(userName, userPass);
-		loginSteps.verifyPasswordErrorMessage("Te rugam bifeaza \"Nu sunt robot\"");
+		loginSteps.verifyPasswordErrorMessage("Ai introdus gresit parola sau adresa de email. Te rog completeaza din nou.");
+		loginSteps.forgetPasswordButton();
+		loginSteps.verifyPasswordText("Informațiile pentru resetarea parolei au fost trimise la adresa ta de email");
+		loginSteps.yahooButton();
+
+
 	}
 
 }

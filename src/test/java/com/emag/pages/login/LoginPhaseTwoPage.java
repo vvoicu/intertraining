@@ -12,7 +12,16 @@ public class LoginPhaseTwoPage extends PageObject{
 
 	@FindBy(css = "div.gui-form-row.custom_error_message")
 	private WebElement confirmationMessage;
-	
+
+    @FindBy(css = "button.auth-anchor")
+    private WebElement forgetPass;
+
+    @FindBy(css = "p.success")
+    private WebElement mesaggePass;
+
+	@FindBy(css = "a.gui-btn")
+	private WebElement yahooButton;
+
 //	@FindBy(css = ".auth-submit")
 //	public WebElement submitButton;
 	
@@ -25,9 +34,17 @@ public class LoginPhaseTwoPage extends PageObject{
 		element(confirmationMessage).waitUntilVisible();
 		System.out.println(confirmationMessage.getText());
 		return confirmationMessage.getText();
-
 	}
-	
+	public void forgetPassword(){
+        forgetPass.click();
+    }
+    public String messagePassword(){
+	    return mesaggePass.getText();
+    }
+	public void yahooButton(){
+		yahooButton.click();
+	}
+
 //	public void clickOnSubmitButton() {
 //		element(submitButton).waitUntilVisible();
 //		submitButton.click();
