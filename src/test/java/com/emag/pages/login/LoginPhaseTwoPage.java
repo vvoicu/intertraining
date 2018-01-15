@@ -9,6 +9,9 @@ public class LoginPhaseTwoPage extends PageObject{
 
 	@FindBy(css = "input#password")
 	public WebElement passInput;
+
+	@FindBy(css = ".custom_error_message")
+    public WebElement captchaText;
 	
 //	@FindBy(css = ".auth-submit")
 //	public WebElement submitButton;
@@ -23,4 +26,9 @@ public class LoginPhaseTwoPage extends PageObject{
 //		element(submitButton).waitUntilVisible();
 //		submitButton.click();
 //	}
+
+    public String grabCaptchaText(){
+	    element(captchaText).waitUntilVisible();
+	    return captchaText.getText();
+    }
 }

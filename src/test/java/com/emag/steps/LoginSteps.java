@@ -35,4 +35,9 @@ public class LoginSteps {
 		loginPhaseTwoPage.inputPassword(pass);
 	}
 
+    @Step
+    public String grabCatpchaText(){
+	    return loginPhaseTwoPage.grabCaptchaText();
+    }
+
 }

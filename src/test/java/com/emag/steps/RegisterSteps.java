@@ -13,4 +13,5 @@ public class RegisterSteps extends ScenarioSteps {
     public String grabNoAccountText(){
         return registerPage.grabNoAccountText();
     }
+
 }

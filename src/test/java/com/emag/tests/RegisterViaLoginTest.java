@@ -32,11 +32,6 @@ public class RegisterViaLoginTest {
 	@Steps
 	public RegisterSteps registerSteps;
 	
-	@Qualifier
-	public String getTestLabel() {
-		return userName + "--" + userPass + "--" + expectedMessage;
-	}
-	
 	@Before
 	public void setupData() {
 		userName = "betdsina.tudor@gmail.com";
@@ -44,7 +39,6 @@ public class RegisterViaLoginTest {
 		expectedMessage = "Betina Tudor2";
 		noAccountMessage = "Se pare ca nu ai un cont eMAG";
 	}
-
 
 	@Test
 	public void loginWithInexitentUser(){
@@ -58,6 +52,7 @@ public class RegisterViaLoginTest {
 
 		String actual = registerSteps.grabNoAccountText();
 		homePageSteps.verifyText(noAccountMessage,actual);
+		System.out.println(registerSteps.grabNoAccountText());
 	}
 
 }
