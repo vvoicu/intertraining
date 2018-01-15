@@ -22,7 +22,8 @@ public class HomePageSteps extends ScenarioSteps{
 	
 	@Step
 	public void moveOverOnMyAccountLink() {
-		headerPage.waitVisibleMyAccountLink();
+		//headerPage.waitVisibleMyAccountLink();
+		headerPage.moveToMyAccount();
 	}
 
 	@Step
