@@ -33,9 +33,10 @@ public class LoginTC01 {
 
     @Before
     public void setupData() {
-        userName = "betina";
+        userName = "betina.tudor@gmail.com";
         userPass = "testareBT";
         expectedMessage = "Nu sunt robot";
+        userWrongPass = "dsfs";
     }
 
 

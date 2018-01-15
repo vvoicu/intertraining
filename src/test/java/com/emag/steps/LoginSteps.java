@@ -46,7 +46,7 @@ public class LoginSteps {
 	public void verifyPasswordErrorMessage(String text){
 		Assert.assertTrue("Expected: " + text + ", Actual: " + loginPhaseTwoPage.getMesaggeText(), loginPhaseTwoPage.getMesaggeText().contains(text));
 	}
-	
+
 	@Step
 	public void forgetPasswordButton() {
 		loginPhaseTwoPage.forgetPassword();
